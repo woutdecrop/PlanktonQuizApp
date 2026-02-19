@@ -2,9 +2,19 @@
 
 An interactive Shiny application for exploring and classifying plankton images. Users can train on species, test their identification skills, and compare human guesses with AI predictions.
 
-![Phyto-Plankton Lab](www/bg.jpg)
+## 1. Prerequisites
 
-## Features
+### 1.1 Install Docker
+Install [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) for your platform (Windows, Mac, Linux). This is required to run the AI prediction server that the Shiny app connects to.
+
+### 1.2 Start the AI Server
+Run the following command in a terminal to start the Docker container:
+
+docker run -ti -p 5000:5000 ai4oshub/phyto-plankton-classification:dev-cpu
+
+This will launch the prediction server, which the Shiny app uses at `http://127.0.0.1:5000/ui`.
+
+## 2. Features
 
 ### Train Mode
 - Browse a gallery of plankton images.
@@ -21,7 +31,7 @@ An interactive Shiny application for exploring and classifying plankton images. 
 - Batch analysis time displayed for each session.
 - Loading modal while AI predictions are processed.
 
-## Installation
+## 3. Installation
 
 1. Clone the repository:
 git clone https://github.com/<your-username>/plankton-lab.git
@@ -34,7 +44,7 @@ install.packages(c("shiny", "shinyjs", "httr", "jsonlite", "shinythemes"))
 - `demo-images/` → contains subfolders for each plankton species with images.
 - `www/` → contains static assets such as background images and loading GIFs.
 
-## Usage
+## 4. Usage
 
 1. Launch the Shiny app:
 library(shiny)
@@ -46,7 +56,7 @@ runApp("app.R")
 
 3. Use filters and dropdowns to customize your experience and focus on specific species.
 
-## File Structure
+## 5. File Structure
 
 Plankton-Lab/
 - app.R                   → main Shiny script
@@ -55,23 +65,23 @@ Plankton-Lab/
 - www/                    → static assets (backgrounds, loading GIFs)
 - README.md               → this file
 
-## AI Integration
+## 6. AI Integration
 
-- Predictions are fetched from a REST endpoint (`predict_url_remote`).
+- Predictions are fetched from a REST endpoint (`predict_url_remote`) running in the Docker container.
 - Returns top-5 predicted species with probabilities.
 - Results are displayed alongside human guesses for comparison.
 
-## Customization
+## 7. Customization
 
 - Update `classes_model` to include new species.
 - Replace background or GIF assets in `www/`.
 - Adjust UI styling in the Shiny `tags$style` section of the script.
 
-## License
+## 8. License
 
 MIT License
 
-## Acknowledgments
+## 9. Acknowledgments
 
-- Built with [Shiny](https://shiny.rstudio.com/), [shinyjs](https://deanattali.com/shinyjs/), [httr](https://cran.r-project.org/package=httr), and [jsonlite](https://cran.r-project.org/package=jsonlite).
+- Built with Shiny (https://shiny.rstudio.com/), shinyjs (https://deanattali.com/shinyjs/), httr (https://cran.r-project.org/package=httr), and jsonlite (https://cran.r-project.org/package=jsonlite).
 - Designed to provide an interactive learning and testing experience for plankton classification.
