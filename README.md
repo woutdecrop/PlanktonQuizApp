@@ -9,9 +9,9 @@ Install [Docker Desktop](https://docs.docker.com/desktop/install/windows-install
 
 ### 1.2 Start the AI Server
 Run the following command in a terminal to start the Docker container:
-
+```bash
 docker run -ti -p 5000:5000 ai4oshub/phyto-plankton-classification:dev-cpu
-
+```
 This will launch the prediction server, which the Shiny app uses at `http://127.0.0.1:5000/ui`.
 
 ## 2. Features
